@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -15,12 +15,7 @@ import { ContactScreen } from "../screen/contactScreen";
 import { AboutScreen } from "../screen/aboutScreen";
 import { routes } from '../controller';
 
-const attendanceName = 'Attendance'
-const employeeName = 'Employee'
 const homeName = 'Home'
-const leaveName = 'Leave'
-const moreName = 'More'
-const payrollName = 'Payroll'
 const contactName = 'Contact'
 const aboutName = 'About'
 
@@ -34,25 +29,17 @@ const TopTapNavigator = () => {
             initialRouteName={homeName}
             screenOptions={({ route }) => ({
                 headerShown: false,
-                tabBarIcon: ({ focused, color }) => {
+                tabBarIcon: ({ color }) => {
 
                     let iconName = '';
                     let rn = route.name;
 
                     if (rn === homeName) {
-                        iconName = focused ? 'home' : 'home-outline'
+                        iconName = 'home-outline'
                     } else if (rn === contactName) {
-                        iconName = focused ? 'home' : 'home-outline'
+                        iconName = 'call-outline'
                     } else if (rn === aboutName) {
-                        iconName = focused ? 'home' : 'home-outline'
-                    } else if (rn === aboutName) {
-                        iconName = focused ? 'home' : 'home-outline'
-                    } else if (rn === aboutName) {
-                        iconName = focused ? 'home' : 'home-outline'
-                    } else if (rn === aboutName) {
-                        iconName = focused ? 'home' : 'home-outline'
-                    } else if (rn === aboutName) {
-                        iconName = focused ? 'home' : 'home-outline'
+                        iconName = 'alert-circle-outline'
                     }
                     return <Ionicons name={iconName} size={23} color={color} />
                 },
@@ -67,10 +54,6 @@ const TopTapNavigator = () => {
             <TopTab.Screen name={homeName} component={HOME} />
             <TopTab.Screen name={contactName} component={ContactScreen} />
             <TopTab.Screen name={aboutName} component={AboutScreen} />
-            {/* <TopTab.Screen name={aboutName} component={AboutScreen} />
-            <TopTab.Screen name={aboutName} component={AboutScreen} />
-            <TopTab.Screen name={aboutName} component={AboutScreen} />
-            <TopTab.Screen name={aboutName} component={AboutScreen} /> */}
         </TopTab.Navigator>
     )
 }
@@ -124,33 +107,13 @@ const BottomTabNavigator = () => {
 
                     <BottomTab.Navigator
                         initialRouteName={homeName}
-                        screenOptions={({ route }) => ({
+                        screenOptions={() => ({
                             headerShown: false,
-                            // tabBarIcon: ({ focused, color, size }) => {
-                            //     let iconName = '';
-                            //     let rn = route.name;
-
-                            //     if (rn === homeName) {
-                            //         iconName = 'home-outline'
-                            //     } else if (rn === attendanceName) {
-                            //         iconName = focused ? 'home' : 'home-outline'
-                            //     } else if (rn === leaveName) {
-                            //         iconName = focused ? 'home' : 'home-outline'
-                            //     } else if (rn === payrollName) {
-                            //         iconName = focused ? 'home' : 'home-outline'
-                            //     } else if (rn === employeeName) {
-                            //         iconName = focused ? 'home' : 'home-outline'
-                            //     } else if (rn === moreName) {
-                            //         iconName = focused ? 'home' : 'home-outline'
-                            //     }
-                            //     return <Ionicons name={iconName} size={size} color={color} />
-                            // },
                             tabBarActiveTintColor: '#c40f7e',
                             tabBarInactiveTintColor: 'grey'
                         })}
 
-                    >
-                        
+                    >                        
                         <>
                             {
                                 componentData?.length > 0 && componentData?.map((d: any, i: any) => {
